@@ -37,6 +37,7 @@ newPet: PetProfile = { // Use the imported PetProfile type
   }
 
   onSubmit() {
+    this.newPet.petType= PetType[this.newPet.petType as keyof typeof PetType]
     this.activeModal.close(this.newPet);
   }
 
