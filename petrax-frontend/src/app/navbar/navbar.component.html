@@ -4,14 +4,31 @@
   <div class="menu-items">
     <!-- For the homepage -->
     <a *ngIf="onHomePage" class="navbar-item" routerLink="/about">About</a>
+    
 
     <!-- For all other pages -->
     <ng-container *ngIf="!onHomePage">
+      <div class="mobile-menu">
+        <button class="menu-button" mat-icon-button [matMenuTriggerFor]="menu" (click)="toggleMenu()">
+          <mat-icon>Menu</mat-icon>
+        </button>
+        
+        <mat-menu #menu="matMenu" [class.menu-open]="isMenuOpen">
+          <button mat-menu-item routerLink="/welcome">Home</button>
+          <button mat-menu-item routerLink="/calendar">Calendar</button>
+          <button mat-menu-item routerLink="/faq">FAQ</button>
+          <button mat-menu-item routerLink="/care-professional">Pet Care</button>
+          <button mat-menu-item routerLink="/image-gallery">My Photos</button>
+          <button mat-menu-item (click)="logout()">Log Out</button>
+        </mat-menu>
+    </div>
+
       <a class="navbar-item" routerLink="/welcome">Home</a>
       <a class="navbar-item" routerLink="/calendar">Calendar</a>
       <a class="navbar-item" routerLink="/faq">FAQ</a>
       <a class="navbar-item" routerLink="/care-professional">Pet Care</a>
       <a class="navbar-item" routerLink="/image-gallery">My Photos</a>
+      <a class="navbar-item" (click)="logout()">Logout</a>
     </ng-container>
   </div>
 </header>
