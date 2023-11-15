@@ -64,3 +64,16 @@ main {
 .footer-link:hover {
     color: #F05D23;
 }
+
+@media (max-width: 768px){
+    .footer-container {
+        font-size: 14px;
+    }
+    .footer-link{
+        display: none;
+    }
+    .footer-copyright{
+        text-align: center;
+        margin-right:15px ;
+    }
+}

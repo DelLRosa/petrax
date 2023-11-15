@@ -105,7 +105,7 @@ body, html {
     margin-top: 5px;
     font-size: 50px;
     text-align: center;
-    padding: 25px 30px;
+    padding: 35px 15px;
     border: #222E50 solid 5px;
     background-color: #F05D23;
     border-radius: 100%;
@@ -221,8 +221,13 @@ li{
         align-items: center;
     }
     .rectangle {
+        margin-top: -20px;
         width: 95%;
         padding: 20px;
+    }
+
+    .welcome{
+        margin-top :10px;
     }
     h1 {
         font-size: 25px;
@@ -243,10 +248,38 @@ li{
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 25px;
+        padding: 15px;
         margin: 10px 5px; 
-        border-radius: 9999px;
         background: #D9D9D9;
+    }
+    .pet-img{
+        margin-top: 5px;
+        font-size: 30px;
+        text-align: center;
+        padding: 30px 25px;
+        border: #222E50 solid 5px;
+        background-color: #F05D23;
+        border-radius: 100%;
+    }
+
+    .page-bottom-container {
+        flex-direction: column;
+    }
+
+    .image-slider{
+        width: 100%;
+        margin: auto;
+        margin-top: 1rem;
+    }
+    .image-slider img{
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        
+        margin:1rem;
+        margin-top:-3px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
     }
 
     .events-container{

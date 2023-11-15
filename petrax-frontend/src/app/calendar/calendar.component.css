@@ -47,9 +47,7 @@ li {
 }
 
 /* Styling for the event title */
-.event-title {
-  /* Add your preferred styles for the event title here */
-}
+
 
 /* Optional hover effect for the list items */
 li:hover {
@@ -60,4 +58,30 @@ li:hover {
 li:focus {
   outline: none;
   background-color: #f0f0f0;
+}
+@media (max-width: 768px){
+ 
+  .content-container{
+    align-items: center;
+    flex-direction: column;
+    
+  }
+  .calendar-container{
+    justify-content: center;
+    margin-left: 15px;
+  
+  }
+  .event-list-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center; 
+  }
+  .upcoming-events {
+    align-self: center;
+    text-align: center;
+  }
+  span {
+    text-align: left;
+  }
+  
 }

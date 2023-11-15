@@ -31,4 +31,10 @@
     display: inline-flex;
     cursor: pointer;
 }
+@media (max-width:768px){
+    .modal-items img {
+        width: 350px;
+        
+    }
+}
 

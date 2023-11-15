@@ -9,6 +9,7 @@
     align-items: center;
     padding: 8px 20px;  /* reduce vertical padding of nav bar */
     box-sizing: border-box;
+    position: relative;
 }
 
 .petrax {
@@ -44,4 +45,27 @@
   width: auto;     /* Keep the logo's aspect ratio */
   vertical-align: middle;   /* Vertically center the logo in the navbar */
   margin-right: 20px;   /* Space between the logo and the text */
+}
+
+.mobile-menu {
+    display: none;
+}
+
+@media(max-width: 767px) {
+    .navbar-container{
+        z-index: 1000;
+    }
+    .mobile-menu {
+        display: block;
+    }
+    .navbar-item {
+        display: none;
+    }
+    .menu-button {
+        background-color: #F05D23;
+        color:#222E50;
+        border: #F05D23 2.5px solid;
+        border-radius: 50px;
+        font-weight: bold;
+    }
 }

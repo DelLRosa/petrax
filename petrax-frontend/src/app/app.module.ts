@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { AppComponent } from './app.component';
@@ -41,6 +42,7 @@ import { LoginService } from './log-in/login.service';
 import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
 import { AddImageComponent } from './image-gallery/add-image/add-image.component';
 import { ImageModalComponent } from './image-gallery/image-modal/image-modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin]);
 
@@ -85,6 +87,8 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin]);
     RouterModule.forRoot([]), // Make sure you have this line for routing to work
     AppRoutingModule,
     FullCalendarModule,
+    MatMenuModule,
+    BrowserAnimationsModule
   ],
   providers: [PetProfileService, PetProfileUpdateService],
   bootstrap: [AppComponent],

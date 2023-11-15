@@ -88,3 +88,31 @@ button:hover {
 .image-gallery img:hover {
     transform: scale(1.05);
 }
+
+@media screen and (max-width: 768px) {
+    
+    .center-container {
+        align-items: center;
+    }
+    .rectangle {
+        margin-top: -20px;
+        width: 95%;
+        padding: 20px;
+    }
+
+    .welcome{
+        margin-top :10px;
+    }
+    h1 {
+        font-size: 25px;
+    }
+    h2 {
+        font-size: 20px;
+        padding:5px;
+    }
+    .image-gallery img {
+        width:250px;
+        height: 250px;
+    }
+
+}

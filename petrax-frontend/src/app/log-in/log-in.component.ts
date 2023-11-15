@@ -64,7 +64,7 @@ export class LogInComponent implements OnInit {
 
   // Navigate to home route
   navigateToHome() {
-    this.router.navigate(['/calendar']);
+    this.router.navigate(['/welcome']);
   }
 
   private getStoredSessionToken(): string | null {
