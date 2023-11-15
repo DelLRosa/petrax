@@ -57,6 +57,7 @@ export class CalendarComponent implements OnInit {
           .subscribe(
             (data) => {
               this.upcomingEvents = data;
+              this.filterUpcomingEvents();
             },
             (error) => {
               console.error('Error fetching upcoming events', error);
@@ -64,6 +65,16 @@ export class CalendarComponent implements OnInit {
           );
       }
 
+      filterUpcomingEvents(){
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+      
+        this.upcomingEvents = this.upcomingEvents.filter((event) => {
+          const eventDate = new Date(event.start);
+          eventDate.setHours(0, 0, 0, 0);
+          return eventDate >= today;
+        });
+      }
 
    initializeCalendar() {
      this.calendarOptions.events = this.allEvents.map(event => ({
@@ -103,6 +114,8 @@ export class CalendarComponent implements OnInit {
     const modalRef = this.modalService.open(AddEventModalComponent);
     modalRef.result.then((newEvent) => {
       this.allEvents.push(newEvent);
+      this.fetchAllEventsForCalendar();
+      this.fetchUpcomingEvents();
     }).catch((error) => {
       console.log('Modal dismissed without saving', error);
     });
