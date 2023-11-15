@@ -34,12 +34,25 @@ body, html {
     gap: 15px;
 }
 .page-title{
-    background-color: #1BB46F;
-    color: #F7F7F2;
-    border: #222E50 2.5px solid;
-    border-radius: 5px;
-    padding: 20px 100px;
+    width:110%;
+    background-image: url('/assets/graphics/banner.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+    height: 150px;
+    margin-top:-55px;
 }
+.page-title h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(247, 247, 242, 0.5);
+    color:#222E50;
+    height: 150px;
+    text-shadow: -1px 0 #f7f7f2, 0 1px #f7f7f2, 1px 0 #f7f7f2, 0 -1px #f7f7f2;
+    /* border-color: #F05D23; */
+}
+
 .info-container {
     display: flex;
     flex-direction: column;

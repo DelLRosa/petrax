@@ -24,33 +24,50 @@
   padding: 0;
 }
 
+.welcome {
+  width:110%;
+  background-image: url('/assets/graphics/banner.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  height: 150px;
+  margin-top:-55px;
+  /* align-items: center; */
+}
+.welcome h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(247, 247, 242, 0.5);
+  color:#222E50;
+  height: 150px;
+  text-shadow: -1px 0 #f7f7f2, 0 1px #f7f7f2, 1px 0 #f7f7f2, 0 -1px #f7f7f2;
+  /* border-color: #F05D23; */
 
-h1 {
-  background-color: #222E50;  /* Blue background */
-  color: #F7F7F2;  /* Text color (light) for contrast */
-  border: 2px solid #1BB46F;  /* Orange outline */
-  padding: 10px 20px;  /* Some padding to give it space */
-  border-radius: 10px;  /* Rounded corners */
-  font-size: 28px;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;  /* Space below the header */
-  font-family: 'Georgia', serif;  /* Maintain the same font family */
+}
+
+.faq-container{
+  background-color: rgba(247, 247, 242, 0.5);
+  border-radius: 5px;
+  /* padding: 5px; */
 }
 
 .faq {
-  font-size: 24px;
+  font-size: 18px;
   color: #F05D23;  /* Green text color */
-  margin: 20px 0;  /* Space at the top and bottom */
-  text-align: left; /* As per your request */
-  font-family: 'Georgia', serif; /* Complimentary serif font */
+  margin: 10px 10px;  /* Space at the top and bottom */
+  text-align: center; /* As per your request */
+ /* Complimentary serif font */
   align-self: flex-start; /* this will align the section to listen to this container and not info above */
 }
 
 .faq h2 {
+  font-size: 24px;
   color: #f05d23;
   margin-bottom: 10px;
+  background-color: #F7F7F2;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 
@@ -73,9 +90,9 @@ h1 {
 }
 
 #RandomFact {
-  color: #222E50;
-  
-            
+  color: #222E50; 
+  margin-bottom: -10px;
+  text-align: center;
 }
 
 .gcse-search {

@@ -31,10 +31,12 @@
     text-decoration: none;
     word-wrap: break-word;
     transition: color 0.3s;
+    opacity: 75%;
 }
 
 .navbar-item:hover {
     color: #F7F7F2;
+    opacity: 100%;
 }
 
 .navbar-logo {

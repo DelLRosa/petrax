@@ -47,6 +47,9 @@ export class LandingPageComponent implements OnInit {
         console.error('Error fetching images', error);
       }
     );
+    setInterval(() => {
+      this.advanceImage();
+    }, 4000);
   }
 
   nextImage() {
@@ -58,6 +61,14 @@ export class LandingPageComponent implements OnInit {
   previousImage() {
     if (this.currentImageIndex > 0) {
       this.currentImageIndex--;
+    }
+  }
+
+  advanceImage(){
+    if(this.currentImageIndex < this.imageUrls.length - 1){
+      this.currentImageIndex++;
+    } else {
+      this.currentImageIndex = 0;
     }
   }
 
@@ -98,12 +109,25 @@ export class LandingPageComponent implements OnInit {
     .subscribe(
       (data) => {
         this.events = [...this.events, ...data];
+        this.filterUpcomingEvents();
       },
       (error) => {
         console.error('Error fetching events', error);
        }
     );
 }
+
+filterUpcomingEvents(){
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  this.events = this.events.filter((event) => {
+    const eventDate = new Date(event.start);
+    eventDate.setHours(0, 0, 0, 0);
+    return eventDate >= today;
+  });
+}
+
   navigateToCalendar() {
     this.router.navigate(['/calendar']);
   }
