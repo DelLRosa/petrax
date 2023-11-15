@@ -8,6 +8,9 @@ import { PetProfileService } from '../pet-profile/pet-profile.service';
 import { CalendarComponent } from '../calendar/calendar.component';
 import { CalendarService } from '../calendar/calendar.service';
 import { PetProfile } from '../pet-profile/pet-profile.model';
+import { ImageService } from '../image-gallery/image.service';
+// import { error } from 'console';
+// import { PetProfileComponent } from '../pet-profile/pet-profile.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -19,22 +22,54 @@ export class LandingPageComponent implements OnInit {
   initializePetProfile() {
     //    this.petName.pets = this.pets
        }
-
-  pets: any[] = [
-    ];
-    
-    events: any[] = [
-    ];
+  
+  currentImageIndex = 0;
+  pets: any[] = [];
+  imageUrls: any[] = [];
+  events: any[] = [];
 
 
   constructor(private modalService:NgbModal,
      private http:HttpClient, 
-     private petProfileService: PetProfileService,
-     private router:Router,) { }
+     public petProfileService: PetProfileService,
+     private router:Router,
+     private imageService: ImageService,
+  ) { }
 
   ngOnInit(): void {
     this.fetchEventsFromServer();
     this.fetchPetsFromServer();
+    this.imageService.getImages().subscribe(
+      (data) => {
+        this.imageUrls = data;
+      },
+      (error) => {
+        console.error('Error fetching images', error);
+      }
+    );
+    setInterval(() => {
+      this.advanceImage();
+    }, 4000);
+  }
+
+  nextImage() {
+    if (this.currentImageIndex < this.imageUrls.length - 1) {
+      this.currentImageIndex++;
+    }
+  }
+
+  previousImage() {
+    if (this.currentImageIndex > 0) {
+      this.currentImageIndex--;
+    }
+  }
+
+  advanceImage(){
+    if(this.currentImageIndex < this.imageUrls.length - 1){
+      this.currentImageIndex++;
+    } else {
+      this.currentImageIndex = 0;
+    }
   }
 
   openPetDetailModal(pet: PetProfile) {
@@ -57,6 +92,11 @@ export class LandingPageComponent implements OnInit {
         (data) => {
           // Update the pets array with the fetched data
           this.pets = [...this.pets, ...data];
+          for (let pet of this.pets) {
+            let petTypeString = this.petProfileService.getPetTypeString(pet.petType);
+            let emoji = this.petProfileService.determineProfilePictureEmoji(petTypeString);
+            pet.emoji = emoji;
+          }
         },
         (error) => {
           console.error('Error fetching pets', error);
@@ -69,12 +109,25 @@ export class LandingPageComponent implements OnInit {
     .subscribe(
       (data) => {
         this.events = [...this.events, ...data];
+        this.filterUpcomingEvents();
       },
       (error) => {
         console.error('Error fetching events', error);
        }
     );
 }
+
+filterUpcomingEvents(){
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  this.events = this.events.filter((event) => {
+    const eventDate = new Date(event.start);
+    eventDate.setHours(0, 0, 0, 0);
+    return eventDate >= today;
+  });
+}
+
   navigateToCalendar() {
     this.router.navigate(['/calendar']);
   }

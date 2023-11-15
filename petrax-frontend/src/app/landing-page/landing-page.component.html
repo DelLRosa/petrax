@@ -1,7 +1,9 @@
 <div class="center-container">
     <div class="rectangle">
+      <!-- <img src='/assets/graphics/banner.jpg' alt="banner"> -->
             <div class = "welcome">
-                <h1>Welcome, UserName</h1>
+              
+                <h1>My Home Page</h1>
             </div>
             <!-- <div class="profile-link">
                 <button (click)="navigateToProfile()">My Profile</button>    
@@ -14,24 +16,28 @@
     Router links to individual profile for each user
     router link to add new pet page -->
     <div class="pet-card-container">
-        <div *ngFor="let pet of pets" class="pet-card">
-            <div class="pet-info">
-            <h4>{{ pet.petName }}</h4>
-            </div>
-            <div >
-                <button class="pet-button" (click)="openPetDetailModal(pet)">View</button>
-            </div>
+      <div *ngFor="let pet of pets" class="pet-card">
+        <div class="pet-info">
+          <p class="pet-img">{{pet.emoji}}</p>
+        </div>
+        <div class="pet-button-container">
+          <button class="pet-button" (click)="openPetDetailModal(pet)">{{ pet.petName }}</button>
+        </div>
       </div>
     </div>
-    <h4><a  class="pet-card" (click)="openAddPetModal()">Add New Pet!</a></h4>
+    <button class= "add-button"(click)="openAddPetModal()">Add New Pet</button>
+
+
+    <!-- <h4><a  class="pet-card" (click)="openAddPetModal()">Add New Pet!</a></h4> -->
 
     <!-- Upcoming Events Section
     Needs: 
     List upcoming events for a user within a time frame-- if none say "No events to show"
     Link to Calendar at the bottom of the section -->
+    <div class="page-bottom-container">
     <div class="events-container">
         <div class="events-list-container">
-          <h2 class="events-header">Upcoming Events</h2>
+          <h4 class="events-header">Upcoming Events</h4>
           <ul class="event-list">
             <li *ngFor="let event of events">
                 <span class="event-date">{{ event.start | date }}</span>
@@ -43,7 +49,12 @@
           <button class="calendar-link" (click)="navigateToCalendar()">Go To Calendar</button>
         </div>
       </div>
-      
+
+      <!-- Image Slider -->
+      <div class="image-slider">
+        <img *ngIf="imageUrls[currentImageIndex]" [src]="'data:image/jpeg;base64,' + imageUrls[currentImageIndex].data" alt="Pet Image">
+      </div>
+  </div>      
 
 
     </div>
